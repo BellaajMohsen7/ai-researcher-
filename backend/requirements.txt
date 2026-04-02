@@ -14,6 +14,7 @@ groq
 google-generativeai
 huggingface-hub
 pydantic
+pydantic-settings
 aiofiles
 jinja2
 mcp
