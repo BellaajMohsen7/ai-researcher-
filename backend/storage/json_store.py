@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 from config import settings
+from storage.supabase_sync import SupabaseSync
 
 
 class DailyNewsSchema:
@@ -36,11 +37,15 @@ class DailyNewsSchema:
 
 
 class JsonStore:
-    """Read/write daily JSON data and weekly reports."""
+    """Read/write daily JSON data and weekly reports. Syncs to Supabase."""
 
     def __init__(self):
         self.daily_dir = settings.daily_dir
         self.weekly_dir = settings.weekly_dir
+        self.sb = SupabaseSync(
+            url=os.getenv("SUPABASE_URL", ""),
+            key=os.getenv("SUPABASE_KEY", ""),
+        )
 
     def _daily_path(self, date_str: str) -> Path:
         return self.daily_dir / f"{date_str}.json"
@@ -49,7 +54,7 @@ class JsonStore:
         return self.weekly_dir / f"week-{week_id}.json"
 
     def save_daily(self, date_str: str, data: dict) -> Path:
-        """Save one day's collected data."""
+        """Save one day's collected data (JSON + Supabase)."""
         path = self._daily_path(date_str)
         total = sum(len(data.get(cat, [])) for cat in settings.categories)
         data["stats"]["total_items"] = total
@@ -58,15 +63,19 @@ class JsonStore:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
+        # Sync to Supabase
+        self.sb.push_daily(date_str, data)
+
         return path
 
     def load_daily(self, date_str: str) -> Optional[dict]:
-        """Load one day's data."""
+        """Load one day's data (local first, then Supabase)."""
         path = self._daily_path(date_str)
         if path.exists():
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f)
-        return None
+        # Fallback: try Supabase
+        return self.sb.pull_daily(date_str)
 
     def load_date_range(self, start: str, end: str) -> list:
         """Load all daily data between two dates."""
@@ -92,7 +101,7 @@ class JsonStore:
         )
 
     def save_weekly_report(self, report: dict) -> Path:
-        """Save weekly report."""
+        """Save weekly report (JSON + Supabase)."""
         year = datetime.now().isocalendar()[0]
         week_num = datetime.now().isocalendar()[1]
         week_id = f"{year}-W{week_num:02d}"
@@ -102,25 +111,34 @@ class JsonStore:
         path = self._weekly_path(week_id)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
+
+        # Sync to Supabase
+        self.sb.push_weekly(week_id, report)
+
         return path
 
     def load_weekly_report(self, week_id: str) -> Optional[dict]:
-        """Load a specific weekly report."""
+        """Load a specific weekly report (local first, then Supabase)."""
         path = self._weekly_path(week_id)
         if path.exists():
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f)
-        return None
+        # Fallback: try Supabase
+        return self.sb.pull_weekly(week_id)
 
     def list_weekly_reports(self) -> list:
-        """List all available weekly reports."""
-        files = sorted(self.weekly_dir.glob("week-*.json"))
-        return [f.stem.replace("week-", "") for f in files]
+        """List all available weekly reports (merge local + Supabase)."""
+        local = [f.stem.replace("week-", "") for f in sorted(self.weekly_dir.glob("week-*.json"))]
+        remote = self.sb.list_weekly_ids()
+        merged = sorted(set(local + remote))
+        return merged
 
     def list_daily_files(self) -> list:
-        """List all available daily files."""
-        files = sorted(self.daily_dir.glob("*.json"))
-        return [f.stem for f in files]
+        """List all available daily files (merge local + Supabase)."""
+        local = [f.stem for f in sorted(self.daily_dir.glob("*.json"))]
+        remote = self.sb.list_daily_dates()
+        merged = sorted(set(local + remote))
+        return merged
 
 
 # Singleton
