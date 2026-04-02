@@ -1,0 +1,437 @@
+{
+  "date": "2026-03-27",
+  "collected_at": "2026-03-27T16:14:39.334130",
+  "ai_models": [
+    {
+      "name": "The AI Scientist-v2 (Sakana AI)",
+      "description": "A major update to the automated research paradigm featuring workshop-level automated scientific discovery via agentic tree search. It represents a significant step forward in autonomous scientific inquiry.",
+      "source_url": "https://github.com/SakanaAI/AI-Scientist-v2",
+      "source_name": "GitHub",
+      "importance_score": 9,
+      "tags": [
+        "agentic-ai",
+        "scientific-discovery",
+        "research"
+      ]
+    },
+    {
+      "name": "VibeVoice (Microsoft)",
+      "description": "An open-source frontier voice AI model released by Microsoft. This significant release strengthens the open-source audio and voice synthesis ecosystem.",
+      "source_url": "https://github.com/microsoft/VibeVoice",
+      "source_name": "GitHub",
+      "importance_score": 9,
+      "tags": [
+        "audio",
+        "voice-ai",
+        "open-source"
+      ]
+    },
+    {
+      "name": "IQuest-Coder-V1 Series",
+      "description": "A new family of code LLMs ranging from 7B to 40B parameters. These models move beyond static generation to incorporate iterative loops for improved coding accuracy.",
+      "source_url": "https://huggingface.co/papers/2603.16733",
+      "source_name": "Hugging Face",
+      "importance_score": 8,
+      "tags": [
+        "llm",
+        "coding",
+        "iterative-reasoning"
+      ]
+    },
+    {
+      "name": "Chandra OCR",
+      "description": "A high-performance OCR model designed to handle complex tables, forms, and handwriting. It focuses on full layout preservation for high-fidelity document digitization.",
+      "source_url": "https://github.com/datalab-to/chandra",
+      "source_name": "GitHub",
+      "importance_score": 8,
+      "tags": [
+        "ocr",
+        "vision",
+        "document-processing"
+      ]
+    },
+    {
+      "name": "PackForcing: Short Video Training for Long Context",
+      "description": "A technical breakthrough for autoregressive video diffusion models. It allows models trained on short videos to successfully handle long context inference.",
+      "source_url": "http://arxiv.org/abs/2603.25730v1",
+      "source_name": "ArXiv",
+      "importance_score": 8,
+      "tags": [
+        "video-diffusion",
+        "long-context",
+        "cv"
+      ]
+    },
+    {
+      "name": "Vega: Learning to Drive with Natural Language",
+      "description": "A vision-language-action (VLA) model specifically for autonomous driving. It integrates natural language instructions directly into the vehicle's decision-making process.",
+      "source_url": "http://arxiv.org/abs/2603.25741v1",
+      "source_name": "ArXiv",
+      "importance_score": 7,
+      "tags": [
+        "vla",
+        "autonomous-driving",
+        "robotics"
+      ]
+    },
+    {
+      "name": "S2D2: Fast Decoding for Diffusion LLMs",
+      "description": "A training-free self-speculation method designed to accelerate block-diffusion language models. It improves inference speed without requiring additional training cycles.",
+      "source_url": "https://huggingface.co/papers/2603.25702",
+      "source_name": "Hugging Face",
+      "importance_score": 7,
+      "tags": [
+        "diffusion-llm",
+        "inference-optimization",
+        "decoding"
+      ]
+    },
+    {
+      "name": "Nudging Hidden States (Audio-LLM CoT)",
+      "description": "A training-free model steering technique for Large Audio-Language Models. It enables Chain-of-Thought reasoning by manipulating hidden states during inference.",
+      "source_url": "https://huggingface.co/papers/2603.14636",
+      "source_name": "Hugging Face",
+      "importance_score": 7,
+      "tags": [
+        "audio-llm",
+        "chain-of-thought",
+        "model-steering"
+      ]
+    },
+    {
+      "name": "Precipitation Nowcasting via Spectral Fusion",
+      "description": "A foundation model that combines radar observations with spectral fusion for weather forecasting. It aims to extend the horizon of accurate precipitation nowcasting.",
+      "source_url": "https://huggingface.co/papers/2603.21768",
+      "source_name": "Hugging Face",
+      "importance_score": 7,
+      "tags": [
+        "weather-forecasting",
+        "foundation-model",
+        "radar"
+      ]
+    },
+    {
+      "name": "Pixel-level Scene Understanding in One Token",
+      "description": "Visual state representation learning for robotic agents. It enables pixel-level understanding of dynamic environments within a single token representation.",
+      "source_url": "https://huggingface.co/papers/2603.13904",
+      "source_name": "Hugging Face",
+      "importance_score": 7,
+      "tags": [
+        "robotics",
+        "scene-understanding",
+        "computer-vision"
+      ]
+    },
+    {
+      "name": "Drive My Way: Personalized VLA Model",
+      "description": "A vision-language-action model that uses preference alignment to adapt to individual driving habits. It focuses on personalizing the autonomous driving experience.",
+      "source_url": "http://arxiv.org/abs/2603.25740v1",
+      "source_name": "ArXiv",
+      "importance_score": 6,
+      "tags": [
+        "vla",
+        "personalization",
+        "autonomous-driving"
+      ]
+    },
+    {
+      "name": "PMT: Plain Mask Transformer",
+      "description": "A transformer-based architecture for image and video segmentation. It utilizes frozen vision encoders to achieve efficient pixel-level classification.",
+      "source_url": "https://huggingface.co/papers/2603.25398",
+      "source_name": "Hugging Face",
+      "importance_score": 6,
+      "tags": [
+        "segmentation",
+        "transformer",
+        "cv"
+      ]
+    },
+    {
+      "name": "Calibri: DiT Parameter-Efficient Calibration",
+      "description": "A specialized calibration technique for Diffusion Transformers (DiT). It enhances model performance through parameter-efficient adjustments.",
+      "source_url": "https://huggingface.co/papers/2603.24800",
+      "source_name": "Hugging Face",
+      "importance_score": 6,
+      "tags": [
+        "diffusion-transformer",
+        "calibration",
+        "efficiency"
+      ]
+    },
+    {
+      "name": "RealRestorer: Large-Scale Image Restoration",
+      "description": "A generalizable model for real-world image restoration. It leverages large-scale editing models to fix artifacts and improve image quality across diverse scenarios.",
+      "source_url": "https://huggingface.co/papers/2603.25502",
+      "source_name": "Hugging Face",
+      "importance_score": 6,
+      "tags": [
+        "image-restoration",
+        "generative-ai",
+        "cv"
+      ]
+    },
+    {
+      "name": "PixelSmile: Facial Expression Editing",
+      "description": "A model for fine-grained editing of facial expressions. It was developed using the Flex Facial Expression dataset to provide realistic expression manipulation.",
+      "source_url": "http://arxiv.org/abs/2603.25728v1",
+      "source_name": "ArXiv",
+      "importance_score": 5,
+      "tags": [
+        "facial-editing",
+        "cv",
+        "generative-ai"
+      ]
+    },
+    {
+      "name": "Apertus-1p5-8b-256-text",
+      "description": "A specific model checkpoint optimized for text generation tasks. It belongs to the Apertus series of language models.",
+      "source_url": "https://huggingface.co/Saesara/apertus-1p5-8b-256-text-10000",
+      "source_name": "Hugging Face",
+      "importance_score": 4,
+      "tags": [
+        "llm",
+        "text-generation"
+      ]
+    },
+    {
+      "name": "Bangla-VITS-Female-1.2",
+      "description": "A text-to-speech model specifically trained for the Bangla language. It utilizes the VITS architecture for high-quality female voice synthesis.",
+      "source_url": "https://huggingface.co/kazol196295/bangla-vits-female-1.2",
+      "source_name": "Hugging Face",
+      "importance_score": 4,
+      "tags": [
+        "tts",
+        "bangla",
+        "audio"
+      ]
+    },
+    {
+      "name": "LLM Plasticity Checkpoints (Cisco1963)",
+      "description": "Research weights that explore the concept of model plasticity during the training process. These checkpoints are used to study how LLMs adapt to new information.",
+      "source_url": "https://huggingface.co/Cisco1963/llmplasticity-de_en_linear_0.5_1-seed42",
+      "source_name": "Hugging Face",
+      "importance_score": 3,
+      "tags": [
+        "research",
+        "model-plasticity",
+        "training"
+      ]
+    }
+  ],
+  "frameworks": [
+    {
+      "name": "Deer-flow (ByteDance)",
+      "description": "An open-source harness for long-horizon SuperAgents. It includes sandboxes, memory management, and coordination mechanisms for sub-agents.",
+      "source_url": "https://github.com/bytedance/deer-flow",
+      "source_name": "GitHub",
+      "importance_score": 8,
+      "tags": [
+        "agents",
+        "orchestration",
+        "open-source"
+      ]
+    },
+    {
+      "name": "AgentScope",
+      "description": "A framework designed for building observable and trustworthy multi-agent systems. It focuses on the reliability and monitoring of agent interactions.",
+      "source_url": "https://github.com/agentscope-ai/agentscope",
+      "source_name": "GitHub",
+      "importance_score": 8,
+      "tags": [
+        "multi-agent",
+        "observability",
+        "framework"
+      ]
+    },
+    {
+      "name": "MemMA: Memory Cycle Coordination",
+      "description": "A framework for multi-agent reasoning that enables the self-evolution of external memory banks. It facilitates long-term information retention and reasoning.",
+      "source_url": "https://huggingface.co/papers/2603.18718",
+      "source_name": "Hugging Face",
+      "importance_score": 8,
+      "tags": [
+        "memory",
+        "multi-agent",
+        "reasoning"
+      ]
+    },
+    {
+      "name": "TrustGraph",
+      "description": "A context development platform that uses graph-native infrastructure. It is designed to improve semantic retrieval through structured graph relationships.",
+      "source_url": "https://github.com/trustgraph-ai/trustgraph",
+      "source_name": "GitHub",
+      "importance_score": 7,
+      "tags": [
+        "graph-database",
+        "rag",
+        "semantic-search"
+      ]
+    },
+    {
+      "name": "AVControl Framework",
+      "description": "An efficient framework for training audio-visual controls. It supports diverse modalities including depth, pose, and trajectory for multimodal AI development.",
+      "source_url": "https://huggingface.co/papers/2603.24793",
+      "source_name": "Hugging Face",
+      "importance_score": 7,
+      "tags": [
+        "audio-visual",
+        "multimodal",
+        "control-systems"
+      ]
+    },
+    {
+      "name": "Evidence Distillation for RAG",
+      "description": "A methodology for enriching knowledge bases in Retrieval-Augmented Generation systems. It focuses on distilling high-quality evidence to improve LLM responses.",
+      "source_url": "http://arxiv.org/abs/2603.25737v1",
+      "source_name": "ArXiv",
+      "importance_score": 7,
+      "tags": [
+        "rag",
+        "knowledge-distillation",
+        "nlp"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "Onyx",
+      "description": "An open-source AI chat platform compatible with all major LLMs. It offers advanced features for enterprise and individual chat-based workflows.",
+      "source_url": "https://github.com/onyx-dot-app/onyx",
+      "source_name": "GitHub",
+      "importance_score": 8,
+      "tags": [
+        "chat-platform",
+        "open-source",
+        "llm-tool"
+      ]
+    },
+    {
+      "name": "Last30Days-Skill",
+      "description": "An AI agent tool that synthesizes summaries from social platforms like Reddit, X, YouTube, and Hacker News. It provides a consolidated view of recent trends.",
+      "source_url": "https://github.com/mvanhorn/last30days-skill",
+      "source_name": "GitHub",
+      "importance_score": 7,
+      "tags": [
+        "agent-tool",
+        "summarization",
+        "social-media"
+      ]
+    },
+    {
+      "name": "FinMCP-Bench",
+      "description": "A benchmark for evaluating LLM agents on financial tool use. It specifically tests agents under the Model Context Protocol in real-world financial scenarios.",
+      "source_url": "https://huggingface.co/papers/2603.24943",
+      "source_name": "Hugging Face",
+      "importance_score": 6,
+      "tags": [
+        "benchmark",
+        "finance",
+        "mcp"
+      ]
+    },
+    {
+      "name": "Daily Stock Analysis System",
+      "description": "An LLM-powered dashboard for analyzing A/H/US stock markets. It synthesizes news and market data to provide daily investment insights.",
+      "source_url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "source_name": "GitHub",
+      "importance_score": 6,
+      "tags": [
+        "finance",
+        "dashboard",
+        "stock-analysis"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "name": "Build an AI Agent in Python in 10 Minutes",
+      "description": "A practical guide for developers to create functional AI agents quickly. It emphasizes simple Python patterns over complex, heavy-weight frameworks.",
+      "source_url": "https://dev.to/morganwilliscloud/ai-agents-dont-need-complex-workflows-build-one-in-python-in-10-minutes-2m5d",
+      "source_name": "Dev.to",
+      "importance_score": 8,
+      "tags": [
+        "python",
+        "agents",
+        "tutorial"
+      ]
+    },
+    {
+      "name": "Ask Your CSV Anything: Data Analysis Agents",
+      "description": "A tutorial covering four Python patterns to transform LLMs into data analysts. It focuses on using agents to query and analyze structured CSV data.",
+      "source_url": "https://dev.to/klement_gunndu/ask-your-csv-anything-build-a-data-analysis-agent-in-python-2641",
+      "source_name": "Dev.to",
+      "importance_score": 8,
+      "tags": [
+        "data-analysis",
+        "csv",
+        "python"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "AI as a Factor in CEO Resignations",
+      "description": "A growing trend where CEOs of major corporations like Coca-Cola and Walmart cite the rapid pace of AI as a reason for stepping down. This signals a shift toward AI-native leadership.",
+      "source_url": "https://www.cnbc.com/2026/03/26/coca-cola-james-quincey-walmart-doug-mcmillon-artificial-intelligence-step-down.html",
+      "source_name": "CNBC",
+      "importance_score": 7,
+      "tags": [
+        "leadership",
+        "industry-trends",
+        "corporate-strategy"
+      ]
+    },
+    {
+      "name": "Speed vs. Smarts for Coding Agents",
+      "description": "An analysis of the trade-offs between latency and reasoning depth in AI coding assistants. It helps developers choose the right agent based on task complexity.",
+      "source_url": "https://dev.to/ben/speed-vs-smarts-for-coding-agents-3h",
+      "source_name": "Dev.to",
+      "importance_score": 5,
+      "tags": [
+        "coding",
+        "performance",
+        "developer-tools"
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "name": "U.S. AI Policy & Governance Crisis",
+      "description": "Warnings that agentic AI is outpacing current regulatory frameworks. This presents an urgent need for enterprise-level governance and policy innovation.",
+      "source_url": "https://www.globenewswire.com/news-release/2026/03/26/3263213/0/en/Ramsey-Theory-Group-CEO-Dan-Herbatschek-New-U-S-AI-Policy-Signals-Urgent-Governance-Crisis-as-Agentic-AI-Surges.html",
+      "source_name": "GlobeNewswire",
+      "importance_score": 6,
+      "tags": [
+        "policy",
+        "governance",
+        "agentic-ai"
+      ]
+    },
+    {
+      "name": "Palantir: AI in National Defense",
+      "description": "Strategic insights into the role of AI in modern warfare and deterrence. It highlights the increasing investment in AI for national security and defense capabilities.",
+      "source_url": "https://www.foxnews.com/culture/americas-undeclared-emergency-palantir-exec-talks-iran-deadly-new-us-weapons-how-avoid-world-war-3",
+      "source_name": "Fox News",
+      "importance_score": 5,
+      "tags": [
+        "defense",
+        "national-security",
+        "geopolitics"
+      ]
+    }
+  ],
+  "raw_sources": {
+    "arxiv": [],
+    "news": [],
+    "devto": [],
+    "github": [],
+    "huggingface": [],
+    "rss": []
+  },
+  "stats": {
+    "total_items": 34,
+    "sources_scraped": 0,
+    "llm_provider_used": "gemini"
+  },
+  "executive_summary": "Today's AI landscape is dominated by advancements in agentic systems and automated research, highlighted by Sakana AI's 'The AI Scientist-v2' and ByteDance's 'Deer-flow' framework. Significant model releases from Microsoft (VibeVoice) and new coding LLM families (IQuest-Coder) demonstrate a shift toward iterative reasoning and high-fidelity audio generation. Meanwhile, the corporate sector is seeing a leadership transition as major CEOs cite the AI wave as a catalyst for resignation, underscoring the urgent need for robust governance as agentic AI capabilities outpace current policy frameworks."
+}
