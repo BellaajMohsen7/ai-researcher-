@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+.git/
+test_*.py
+list_gemini_models.py
