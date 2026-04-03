@@ -2,6 +2,7 @@ fastapi
 uvicorn[standard]
 crewai
 crewai-tools
+litellm
 apscheduler
 python-dotenv
 httpx
