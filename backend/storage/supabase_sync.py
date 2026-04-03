@@ -55,7 +55,7 @@ class SupabaseSync:
                 .eq("date", date_str) \
                 .maybe_single() \
                 .execute()
-            if res.data:
+            if res and res.data:
                 return res.data["data"]
         except Exception as e:
             logger.error(f"Supabase pull_daily failed: {e}")
@@ -98,7 +98,7 @@ class SupabaseSync:
                 .eq("week_id", week_id) \
                 .maybe_single() \
                 .execute()
-            if res.data:
+            if res and res.data:
                 return res.data["data"]
         except Exception as e:
             logger.error(f"Supabase pull_weekly failed: {e}")

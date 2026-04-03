@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from datetime import datetime
 from crewai import Agent, Crew, Task, Process, LLM
 from agents.crawler_agent import create_academic_crawler_agent, create_news_crawler_agent
@@ -166,11 +167,17 @@ class AIDailyNewsCrew:
         logger.info(f"Starting daily crew run for {today} | LLM: {self.llm_provider}")
 
         tasks = self._create_tasks()
+        def rate_limit_callback(step_output):
+            """Wait 60s between steps to avoid Groq 12K TPM rate limit."""
+            logger.info("⏳ Waiting 60s for Groq rate limit reset...")
+            time.sleep(60)
+
         crew = Crew(
             agents=[self.academic_crawler, self.news_crawler, self.analyst, self.writer],
             tasks=tasks,
             process=Process.sequential,
             verbose=True,
+            step_callback=rate_limit_callback,
         )
 
         try:
