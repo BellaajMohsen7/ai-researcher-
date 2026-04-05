@@ -2,6 +2,7 @@ import json
 import os
 import time
 from datetime import datetime
+from pathlib import Path
 from crewai import Agent, Crew, Task, Process, LLM
 from agents.crawler_agent import create_academic_crawler_agent, create_news_crawler_agent
 from agents.analyst_agent import create_analyst_agent
@@ -11,6 +12,10 @@ from config import settings
 import logging
 
 logger = logging.getLogger(__name__)
+
+# Checkpoint directory for task output files
+CHECKPOINT_DIR = Path(settings.data_dir) / "checkpoints"
+CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def get_crawler_llm() -> tuple[LLM, str]:
@@ -92,6 +97,7 @@ class AIDailyNewsCrew:
                 "descriptions and URLs."
             ),
             agent=self.academic_crawler,
+            output_file=str(CHECKPOINT_DIR / f"{today}_crawl_academic.md"),
         )
 
         crawl_news_task = Task(
@@ -109,6 +115,7 @@ class AIDailyNewsCrew:
                 "including titles, descriptions, and URLs."
             ),
             agent=self.news_crawler,
+            output_file=str(CHECKPOINT_DIR / f"{today}_crawl_news.md"),
         )
 
         analyze_task = Task(
@@ -131,6 +138,7 @@ class AIDailyNewsCrew:
             ),
             agent=self.analyst,
             context=[crawl_academic_task, crawl_news_task],
+            output_file=str(CHECKPOINT_DIR / f"{today}_analysis.md"),
         )
 
         write_task = Task(
@@ -157,6 +165,7 @@ class AIDailyNewsCrew:
             ),
             agent=self.writer,
             context=[analyze_task],
+            output_file=str(CHECKPOINT_DIR / f"{today}_final_output.json"),
         )
 
         return [crawl_academic_task, crawl_news_task, analyze_task, write_task]
@@ -172,11 +181,25 @@ class AIDailyNewsCrew:
             logger.info("⏳ Waiting 60s for Groq rate limit reset...")
             time.sleep(60)
 
+        from crewai import Memory
+        memory = Memory(
+            llm=f"gemini/{settings.gemini_model}",
+            embedder={
+                "provider": "google-generativeai",
+                "config": {
+                    "model_name": "gemini-embedding-001",
+                    "api_key": settings.gemini_api_key,
+                },
+            },
+        )
+
         crew = Crew(
             agents=[self.academic_crawler, self.news_crawler, self.analyst, self.writer],
             tasks=tasks,
             process=Process.sequential,
             verbose=True,
+            memory=memory,
+            cache=True,
             step_callback=rate_limit_callback,
         )
 

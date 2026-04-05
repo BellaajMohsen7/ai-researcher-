@@ -1,1 +1,0 @@
-# https://github.com/mvanhorn/last30days-skill for more search and scrape

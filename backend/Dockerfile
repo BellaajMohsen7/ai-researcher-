@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create data directories
-RUN mkdir -p data/daily data/weekly
+RUN mkdir -p data/daily data/weekly data/checkpoints
 
 EXPOSE 10000
 

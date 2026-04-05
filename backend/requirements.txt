@@ -12,6 +12,7 @@ praw
 arxiv
 newsapi-python
 groq
+google-genai
 google-generativeai
 huggingface-hub
 pydantic

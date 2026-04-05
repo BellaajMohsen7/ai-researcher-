@@ -1,7 +1,8 @@
 import json
 import logging
 from groq import Groq
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from huggingface_hub import InferenceClient
 from config import settings
 
@@ -17,11 +18,10 @@ class LLMProvider:
         if settings.groq_api_key:
             self.groq_client = Groq(api_key=settings.groq_api_key)
 
-        # Backup 1: Gemini
-        self.gemini_model = None
+        # Backup 1: Gemini (new google-genai SDK)
+        self.gemini_client = None
         if settings.gemini_api_key:
-            genai.configure(api_key=settings.gemini_api_key)
-            self.gemini_model = genai.GenerativeModel(settings.gemini_model)
+            self.gemini_client = genai.Client(api_key=settings.gemini_api_key)
 
         # Backup 2: HuggingFace
         self.hf_client = None
@@ -50,17 +50,18 @@ class LLMProvider:
             except Exception as e:
                 logger.warning(f"Groq failed: {e}")
 
-        # --- Try Gemini ---
-        if self.gemini_model:
+        # --- Try Gemini (new google-genai SDK) ---
+        if self.gemini_client:
             try:
                 full_prompt = ""
                 if system_prompt:
                     full_prompt = f"System: {system_prompt}\n\n"
                 full_prompt += prompt
 
-                response = self.gemini_model.generate_content(
-                    full_prompt,
-                    generation_config=genai.GenerationConfig(
+                response = self.gemini_client.models.generate_content(
+                    model=settings.gemini_model,
+                    contents=full_prompt,
+                    config=types.GenerateContentConfig(
                         temperature=temperature,
                         max_output_tokens=4096,
                     )
@@ -73,10 +74,13 @@ class LLMProvider:
         # --- Try HuggingFace ---
         if self.hf_client:
             try:
+                sys_tag = "<" + "|system|" + ">"
+                user_tag = "<" + "|user|" + ">"
+                asst_tag = "<" + "|assistant|" + ">"
                 full_prompt = ""
                 if system_prompt:
-                    full_prompt = f"<|system|>{system_prompt}"
-                full_prompt += f"<|user|>{prompt}<|assistant|>"
+                    full_prompt = f"{sys_tag}{system_prompt}"
+                full_prompt += f"{user_tag}{prompt}{asst_tag}"
 
                 response = self.hf_client.text_generation(
                     full_prompt,

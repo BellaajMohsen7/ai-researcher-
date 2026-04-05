@@ -22,4 +22,9 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Data checkpoints (auto-saved by CrewAI tasks)
+backend/data/checkpoints/
 
+# CrewAI memory (local SQLite + ChromaDB)
+*.db
+chroma_db/
